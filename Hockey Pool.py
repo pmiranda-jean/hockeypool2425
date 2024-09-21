@@ -15,10 +15,10 @@ goalies_stats = {}
 participants = {
     "Philippe": {
         "skaters": ['8476453','8477934','8478420','8480023','8478483','8474600','8477493','8480018','8477504'], 
-        "goalies": ['8479979']
+        "goalies": ['8478048']
     },
     "Pierre": {
-        "skaters": ['8476453'],
+        "skaters": [],
         "goalies": []
     },
     "Gabriela": {
@@ -38,6 +38,18 @@ participants = {
         "goalies": []
     },
      "George": {
+        "skaters": [],
+        "goalies": []
+    },
+    "Mina": {
+        "skaters": [],
+        "goalies": []
+    },
+     "Matthew": {
+        "skaters": ['8478402', '8479318', '8478420','8480023','8474600','8477404','8480018','8479323','8484144'],
+        "goalies": ['8479979']
+    },
+     "Felix": {
         "skaters": [],
         "goalies": []
     }
@@ -144,17 +156,16 @@ def display_participant_players():
         for skater_id in players['skaters']:
             stats = skaters_stats.get(skater_id, {})
             points = calculate_points(skater_id, "skater")
-            print(f"{stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A'):<30} "
+            print(f"{stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A') + ' (' + stats.get('Team','N/A') + ')':<30} "
                   f"{stats.get('Goals', 0):<5} {stats.get('Assists', 0):<5} {stats.get('Wins', 0):<5} {stats.get('Shutouts', 0):<5} {points:<5}")
         
         for goalie_id in players['goalies']:
             stats = goalies_stats.get(goalie_id, {})
             points = calculate_points(goalie_id, "goalie")
-            print(f"{stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A'):<30} "
+            print(f"{stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A') + ' (' + stats.get('Team','N/A') + ')':<30} "
                   f"{stats.get('Goals', 0):<5} {stats.get('Assists', 0):<5} {stats.get('Wins', 0):<5} {stats.get('Shutouts', 0):<5} {points:<5}")
 
 # Function to rank players by points and show who selected them
-# Function to rank players by points and display who selected them
 def rank_players():
     # Create a dictionary to store points for all players (skaters and goalies)
     player_points = {}
@@ -182,11 +193,11 @@ def rank_players():
 
         if player_id in skaters_stats:
             stats = skaters_stats[player_id]
-            print(f"{rank:<5} {stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A'):<30} "
+            print(f"{rank:<5} {stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A')+ ' (' + stats.get('Team','N/A') + ')':<30} "
                   f"{points:<5} {selectors_list:<30}")
         else:
             stats = goalies_stats[player_id]
-            print(f"{rank:<5} {stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A'):<30} "
+            print(f"{rank:<5} {stats.get('First Name', 'N/A') + ' ' + stats.get('Last Name', 'N/A')+ ' (' + stats.get('Team','N/A') + ')':<30} "
                   f"{points:<5} {selectors_list:<30}")
             
 # Updating the player_selectors dictionary
@@ -210,8 +221,6 @@ rank_participants()
 rank_players()
 display_participant_players()
 
-
-#seaborn 
 
 
 # In[ ]:
